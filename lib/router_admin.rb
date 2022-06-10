@@ -131,22 +131,15 @@ class Router_Admin
               break
             when 7
               harddrives = Harddrive.all
-              puts "\n\nAffichons toutes les poster :\n\n"
+              puts "\n\nAffichons toutes les disques durs :\n\n"
               Controller_Harddrive.new.index_items
               @@typemenu = 4
               itemonly(harddrives)
               break
             when 8
-              items = Item.all
-              i = 1
-              @@typemenu = 5
               puts "\n\nAffichons toutes les annonces :\n\n"
-              items.each do |item|
-                if item.author == "user"
-                  puts "#{i} - #{item.name} - type :#{item.type}"
-                  i = i + 1
-                end
-              end
+              Controller_Annonce.new.index_items
+              @@typemenu = 5
               pricemenu()
               break
             when 9

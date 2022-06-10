@@ -1,5 +1,7 @@
 require_relative '../view/view_poster/view_create'
 require_relative '../view/view_poster/view_update'
+require_relative '../view/view_poster/view_index'
+require_relative '../view/view_poster/view_show'
 require_relative '../model/poster'
 require_relative '../model/annonce'
 require_relative 'controller_item'
@@ -11,23 +13,13 @@ class Controller_Poster < Controller_Item
 
   def index_items
     posters = Poster.all
-    puts "\n\n"  
-    i = 0
-    posters.each do |item|
-      puts "#{i = i + 1} - #{item.name}"
-    end
+    View_Poster_Index.new.index(posters)
   end
 
   def show(itemchoice)
     @@item = itemchoice
     poster = Poster.find(itemchoice)
-    puts "#{poster.id} - #{poster.name} - prix : #{poster.price} - quantité : #{poster.quantity} - marque : #{poster.brand} - couleur : #{poster.color} - size : #{poster.size}"
-    puts "description:"
-    puts "> #{poster.description}"
-    if poster.author == "user"
-      item = Annonce.find(itemchoice)
-      puts "Telephone du vendeur : #{item.phone}"
-    end
+    View_Poster_Show.new.show(poster)
   end
 
   def create

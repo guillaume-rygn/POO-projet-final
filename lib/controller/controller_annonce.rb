@@ -4,12 +4,19 @@ require_relative '../model/shoe'
 require_relative '../model/poster'
 require_relative '../view/view_annonce/view_create'
 require_relative '../view/view_annonce/view_update'
+require_relative '../view/view_annonce/view_index'
+
 
 
 class Controller_Annonce < Controller_Item
 
+  def index_items
+    annonces = Item.all
+    View_Annonce_Index.new.index(annonces)
+  end
+
   def create
-    params = View_Create_Annonce.new.create_item
+    params = View_Annonce_Create.new.create_item
 
     item = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7],params.values[8], params.values[9], params.values[10], params.values[11])
     item.save
@@ -17,7 +24,7 @@ class Controller_Annonce < Controller_Item
   end
 
   def update(id)
-    response =  View_Update_Annonce.new.buy_item(id)
+    response =  View_Annonce_Update.new.buy_item(id)
 
     if response != "n" 
       item = Item.find(id)

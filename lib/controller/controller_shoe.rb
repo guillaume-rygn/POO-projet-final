@@ -1,5 +1,7 @@
 require_relative '../view/view_shoe/view_create'
 require_relative '../view/view_shoe/view_update'
+require_relative '../view/view_shoe/view_index'
+require_relative '../view/view_shoe/view_show'
 require_relative '../model/shoe'
 require_relative '../model/annonce'
 require_relative 'controller_item'
@@ -11,23 +13,13 @@ class Controller_Shoe < Controller_Item
 
   def index_items
     shoes = Shoe.all
-    puts "\n\n"  
-    i = 0
-    shoes.each do |item|
-      puts "#{i = i + 1} - #{item.name}"
-    end
+    View_Shoe_Index.new.index(shoes)
   end
 
   def show(itemchoice)
     @@item = itemchoice
     shoe = Shoe.find(itemchoice)
-    puts "#{shoe.id} - #{shoe.name} - prix : #{shoe.price} - quantité : #{shoe.quantity} - marque : #{shoe.brand} - couleur : #{shoe.color} - size : #{shoe.size}"
-    puts "description:"
-    puts "> #{shoe.description}"
-    if shoe.author == "user"
-      item = Annonce.find(itemchoice)
-      puts "Telephone du vendeur : #{item.phone}"
-    end
+    View_Shoe_Show.new.show(shoe)
   end
 
   def create

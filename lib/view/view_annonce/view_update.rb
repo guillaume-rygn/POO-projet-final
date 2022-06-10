@@ -1,6 +1,6 @@
 require_relative '../view'
 
-class View_Update_Annonce < View
+class View_Annonce_Update < View
   def buy_item(id)
     item = Item.find(id)
     if item.quantity.to_i == 0

@@ -1,5 +1,6 @@
 require_relative '../view/view_harddrive/view_create'
 require_relative '../view/view_harddrive/view_update'
+require_relative '../view/view_harddrive/view_index'
 require_relative '../router_admin'
 require_relative '../model/harddrive'
 require_relative '../model/annonce'
@@ -11,11 +12,7 @@ class Controller_Harddrive < Controller_Item
 
   def index_items
     harddrives = Harddrive.all
-    puts "\n\n"  
-    i = 0
-    harddrives.each do |item|
-      puts "#{i = i + 1} - #{item.name}"
-    end
+    View_Harddrive_Index.new.index(harddrives)
   end
 
   def show(itemchoice)

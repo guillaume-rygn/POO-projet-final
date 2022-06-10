@@ -1,6 +1,8 @@
 require_relative '../model/item'
 require_relative '../view/view_item/view_create'
 require_relative '../view/view_item/view_update'
+require_relative '../view/view_item/view_index'
+require_relative '../view/view_item/view_show'
 require_relative '../model/annonce'
 require_relative '../router_admin'
 
@@ -11,19 +13,14 @@ class Controller_Item
 
   def index_items
     items = Item.all
-    puts "\n\n"  
-    items.sort_by{|x| x.name.downcase}.each_with_index do |item, index|
-      puts "#{index + 1} - #{item.name}"
-    end
+    View_Item_Index.new.index(items)
   end
 
 
   def show(itemchoice)
     @@item = itemchoice
     item = Item.find(itemchoice)
-    puts "#{item.id} - #{item.name} - prix : #{item.price} - quantité : #{item.quantity} - marque : #{item.brand} - couleur : #{item.color}"
-    puts "description:"
-    puts "> #{item.description}"
+    View_Item_Show.new.show(item)
   end
 
   def create
