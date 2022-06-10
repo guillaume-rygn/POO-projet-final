@@ -1,14 +1,14 @@
-require_relative '../controller/controller_admin'
+require_relative './controller/controller_item'
+require_relative './controller/controller_shoe'
+require_relative './controller/controller_poster'
+require_relative './controller/controller_harddrive'
 
-class View_Menu
+class Router_Admin
 
   attr_accessor :controlleradmin
 
   @@typemenu = 1
 
-  def initialize
-    @controlleradmin = Controller_Admin.new
-  end
 
   def perform
     puts "-----------------------------------------"
@@ -19,7 +19,7 @@ class View_Menu
     menu()
   end
 
-  def menu  
+  def menu 
     while true
 
       puts "\n\nBonjour Admin, Que souhaites tu faire ?"
@@ -33,9 +33,43 @@ class View_Menu
       when 1
         menu_all_item()
       when 2
-        @controlleradmin.create
+        menu_create() 
       when 3
         puts "\n\nA bientôt Admin !\n\n"
+      break
+      else
+        puts "Merci de choisir un choix valide"
+      end
+
+    end
+  end
+
+  def menu_create
+    while true
+
+      puts "\n\nQuel objet souhaitez vous créer ?"
+      puts "1 - Item classique"
+      puts "2 - Chaussure"
+      puts "3 - Poster"
+      puts "4 - Disque dur"
+      puts "5 - retour en arrière"
+
+      choice = gets.chomp.to_i
+
+      case choice 
+      when 1
+        Controller_Item.new.create
+        break
+      when 2
+        Controller_Shoe.new.create    
+        break
+      when 3
+        Controller_Poster.new.create
+        break
+      when 4
+        Controller_Harddrive.new.create
+        break
+      when 5
         break
       else
         puts "Merci de choisir un choix valide"
@@ -47,7 +81,7 @@ class View_Menu
 
   def menu_all_item
     puts "\n\nAffichons tous les Items :\n\n"
-        @controlleradmin.index_items(1)
+        Controller_Item.new.index_items
         @@typemenu = 1
         while true
           puts "\n\nQue souhaites tu faire ?"
@@ -66,34 +100,67 @@ class View_Menu
 
           case choice_item 
             when 1
-              Controller_Client.new.create
+              Controller_Annonce.new.create
               break
             when 2
              menu_show_item()
              break
             when 3
-              pricemenu(2)
+              items = Item.all
+              puts "\n\nAffichons tous les Items par prix croissant :\n\n"
+              orderprice(items)
               break
             when 4
-              pricemenu(3)
+              items = Item.all
+              puts "\n\nAffichons tous les Items par prix décroissant:\n\n"
+              orderpriceinverse(items)
               break
             when 5
               shoes = Shoe.all
-              itemonly(4, "chaussure", shoes)
+              puts "\n\nAffichons toutes les chaussures :\n\n"
+              Controller_Shoe.new.index_items
+              @@typemenu = 2
+              itemonly(shoes)
               break
             when 6
               posters = Poster.all
-              itemonly(5, "poster", posters)
+              puts "\n\nAffichons toutes les poster :\n\n"
+              Controller_Poster.new.index_items
+              @@typemenu = 3
+              itemonly(posters)
               break
             when 7
               harddrives = Harddrive.all
-              itemonly(6, "disque dur", harddrives)
+              puts "\n\nAffichons toutes les poster :\n\n"
+              Controller_Harddrive.new.index_items
+              @@typemenu = 4
+              itemonly(harddrives)
               break
             when 8
-              pricemenu(7)
+              items = Item.all
+              i = 1
+              @@typemenu = 5
+              puts "\n\nAffichons toutes les annonces :\n\n"
+              items.each do |item|
+                if item.author == "user"
+                  puts "#{i} - #{item.name} - type :#{item.type}"
+                  i = i + 1
+                end
+              end
+              pricemenu()
               break
             when 9
-              pricemenu(8)
+              items = Item.all
+              i = 1
+              @@typemenu = 6
+              puts "\n\nAffichons toutes les items en boutique :\n\n"
+              items.each do |item|
+                if item.author == "shop"
+                  puts "#{i} - #{item.name} - type :#{item.type}"
+                  i = i + 1
+                end
+              end
+              pricemenu()
               break
             when 10
               break
@@ -113,33 +180,39 @@ class View_Menu
           if @@typemenu == 1
             items.sort_by{|x| x.name.downcase}.each_with_index do |item, index|
               if itemchoice.to_i == index + 1
-                @controlleradmin.show(item.id)
-                menu_function_item()
+                Controller_Item.new.show(item.id)
+                menu_function_item(item.id)
               end
             end
           elsif @@typemenu == 2
-            items.map{|item| item.price[1..-1]}
-            items.sort_by{|x| x.price[1..-1].to_f}.each_with_index do |item, index|
-              if itemchoice.to_i == index + 1
-                @controlleradmin.show(item.id)
-                menu_function_item()
+            i = 1
+            items.each do |item, index|
+              if item.type == "shoe"
+                if itemchoice.to_i == i
+                  Controller_Shoe.new.show(item.id)
+                  menu_function_item(item.id)
+                end
+                i = i + 1
               end
             end
           elsif @@typemenu == 3
-            items.map{|item| item.price[1..-1]}
-            items.sort_by{|x| x.price[1..-1].to_f}.reverse!.each_with_index do |item, index|
-              if itemchoice.to_i == index + 1
-                @controlleradmin.show(item.id)
-                menu_function_item()
+            i = 1
+            items.each do |item, index|
+              if item.type == "poster"
+                if itemchoice.to_i == i
+                  Controller_Poster.new.show(item.id)
+                  menu_function_item(item.id)
+                end
+                i = i + 1
               end
             end
           elsif @@typemenu == 4
             i = 1
             items.each do |item, index|
-              if item.type == "shoe"
+              if item.type == "hard drive"
                 if itemchoice.to_i == i
-                  @controlleradmin.show(item.id)
-                  menu_function_item()
+                  Controller_Harddrive.new.show(item.id)
+                  menu_function_item(item.id)
                 end
                 i = i + 1
               end
@@ -147,10 +220,10 @@ class View_Menu
           elsif @@typemenu == 5
             i = 1
             items.each do |item, index|
-              if item.type == "poster"
+              if item.author == "user"
                 if itemchoice.to_i == i
-                  @controlleradmin.show(item.id)
-                  menu_function_item()
+                  Controller_Item.new.show(item.id)
+                  menu_function_item(item.id)
                 end
                 i = i + 1
               end
@@ -158,32 +231,10 @@ class View_Menu
           elsif @@typemenu == 6
             i = 1
             items.each do |item, index|
-              if item.type == "hard drive"
-                if itemchoice.to_i == i
-                  @controlleradmin.show(item.id)
-                  menu_function_item()
-                end
-                i = i + 1
-              end
-            end
-          elsif @@typemenu == 7
-            i = 1
-            items.each do |item, index|
-              if item.author == "user"
-                if itemchoice.to_i == i
-                  @controlleradmin.show(item.id)
-                  menu_function_item()
-                end
-                i = i + 1
-              end
-            end
-          elsif @@typemenu == 8
-            i = 1
-            items.each do |item, index|
               if item.author == "shop"
                 if itemchoice.to_i == i
-                  @controlleradmin.show(item.id)
-                  menu_function_item()
+                  Controller_Item.new.show(item.id)
+                  menu_function_item(item.id)
                 end
                 i = i + 1
               end
@@ -197,7 +248,8 @@ class View_Menu
   end
 
 
-  def menu_function_item
+  def menu_function_item(id)
+    item = Item.find(id)
     while true
       puts "\n\nVoulez-vous modifier cet item ?"
       puts "1 - Modifier l'item"
@@ -208,9 +260,17 @@ class View_Menu
 
       case choice_update 
         when 1
-          @controlleradmin.update
+          if item.type === "other"
+            Controller_Item.new.update(id)
+          elsif item.type === "shoe"
+            Controller_Shoe.new.update(id)
+          elsif item.type === "poster"
+            Controller_Poster.new.update(id)
+          elsif item.type === "hard drive"
+            Controller_Harddrive.new.update(id)
+          end
         when 2
-          @controlleradmin.delete
+          Controller_Item.new.delete(id)
           break
         when 3
           break
@@ -220,14 +280,11 @@ class View_Menu
     end
   end
 
-  
+
 
   private 
 
-  def pricemenu(id)
-    puts "\n\nAffichons tous les Items :\n\n"
-        @controlleradmin.index_items(id)
-        @@typemenu = id
+  def pricemenu
         while true
           puts "\n\nQue souhaites tu faire ?"
           puts "1 - Afficher un Item par id"
@@ -248,10 +305,7 @@ class View_Menu
   end
   
 
-  def itemonly(id, item, array)
-    puts "\n\nAffichons toutes les #{item} :\n\n"
-        @controlleradmin.index_items(id)
-        @@typemenu = id
+  def itemonly(array)
         while true
           puts "\n\nQue souhaites tu faire ?"
           puts "1 - Afficher un Item par id"

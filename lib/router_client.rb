@@ -1,16 +1,13 @@
-require_relative 'view_menu'
-require_relative '../model/item'
-require_relative '../controller/controller_client'
+require_relative 'router_admin'
+require_relative './model/item'
+require_relative './controller/controller_annonce'
+require_relative './controller/controller_item'
 
 
-class View_Client < View_Menu
+class Router_Client < Router_Admin
   
   attr_accessor :controllerclient
-  
-  def initialize
-    @controlleradmin = @controllerclient = Controller_Client.new
-  end
-  
+    
   def menu  
     while true
 
@@ -23,10 +20,9 @@ class View_Client < View_Menu
 
       case choice 
       when 1
-        @controllerclient.index_items(1)
         menu_all_item()
       when 2
-        View_Client.new.admin
+        admin()
         break
       when 3
         puts "\n\nA bientôt !\n\n"
@@ -48,7 +44,7 @@ class View_Client < View_Menu
       case choicepsw 
       when 1234
         puts "Connexion réussi"
-        View_Menu.new.menu
+        method(:menu).super_method.call
         break
       else
         puts "Erreur veuillez reessayer"
@@ -57,7 +53,7 @@ class View_Client < View_Menu
     end
   end
 
-  def menu_function_item
+  def menu_function_item(id)
     while true
       puts "\n\nQue souhaites tu faire ?"
       puts "1 - Acheter l'item"
@@ -67,7 +63,7 @@ class View_Client < View_Menu
 
       case choice_update 
         when 1
-          @controllerclient.update
+          Controller_Annonce.new.update(id)
         when 2
           break
       else

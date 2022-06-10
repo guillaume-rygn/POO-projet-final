@@ -1,16 +1,26 @@
-require_relative'controller_admin'
+require_relative'controller_item'
 require_relative '../model/item'
 require_relative '../model/shoe'
 require_relative '../model/poster'
-require_relative '../view/view'
+require_relative '../view/view_annonce/view_create'
+require_relative '../view/view_annonce/view_update'
 
-class Controller_Client < Controller_Admin
 
-  def update
-    response = @view.buy_item(@@item)
+class Controller_Annonce < Controller_Item
+
+  def create
+    params = View_Create_Annonce.new.create_item
+
+    item = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7],params.values[8], params.values[9], params.values[10], params.values[11])
+    item.save
+    puts "\n\nVotre Anonnce a bien été enregistré !\n\n"
+  end
+
+  def update(id)
+    response =  View_Update_Annonce.new.buy_item(id)
 
     if response != "n" 
-      item = Item.find(@@item)
+      item = Item.find(id)
       if item.type == "other"
         newquantityitem = Item.new(item.id, item.name, item.price, response, item.brand, item.description, item.type, item.color,item.author)
         newquantityitem.saveupdate(newquantityitem.id)
@@ -31,12 +41,6 @@ class Controller_Client < Controller_Admin
     
   end
 
-  def create
-    params = @view.create_item("annonce")
 
-    item = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7],params.values[8], params.values[9], params.values[10], params.values[11])
-    item.save
-    puts "\n\nVotre Anonnce a bien été enregistré !\n\n"
-  end
 
 end

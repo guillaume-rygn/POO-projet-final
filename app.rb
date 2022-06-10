@@ -1,3 +1,3 @@
-require_relative 'lib/router'
+require_relative 'lib/router_client'
 
-Router.new.perform
+Router_Client.new.perform
