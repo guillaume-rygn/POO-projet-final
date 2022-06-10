@@ -37,11 +37,11 @@ class Controller_Item
     params = View_Item_Update.new.update_item(id)
     if item.author == "shop"
       newitem = Item.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], "other", params.values[6], "shop")
-      newitem.saveupdate(@@item)
+      newitem.saveupdate(id)
       puts "Votre item à bien été mis à jour"
     elsif item.author == "user"
       newitem = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7], params.values[8], params.values[9], params.values[10], params.values[11])
-      newitem.saveupdate(@@item)
+      newitem.saveupdate(id)
       puts "Votre item à bien été mis à jour"
     end
   end
