@@ -9,8 +9,6 @@ require_relative 'controller_item'
 
 class Controller_Harddrive < Controller_Item
 
-  @@item
-
   def index_items
     harddrives = Harddrive.all
     View_Harddrive_Index.new.index(harddrives)
@@ -32,15 +30,15 @@ class Controller_Harddrive < Controller_Item
   end
 
   def update(id)
-    harddrive = Harddrive.find(@@item)
-    params = View_Update_Harddrive.new.update_item(@@item)
+    harddrive = Harddrive.find(id)
+    params = View_Update_Harddrive.new.update_item(id)
     if harddrive.author == "user" 
       newitem = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7], params.values[8], params.values[9], params.values[10], params.values[11])
-      item.saveupdate(@@item)
+      item.saveupdate(id)
       puts "Votre disque dur à bien été mis à jour"
     elsif harddrive.author == "shop" 
       item = Harddrive.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7],params.values[8], params.values[9],"user")
-      item.saveupdate(@@item)
+      item.saveupdate(id)
       puts "Votre disque dur à bien été mis à jour"
     end
   end

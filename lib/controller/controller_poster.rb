@@ -9,8 +9,6 @@ require_relative '../router_admin'
 
 class Controller_Poster < Controller_Item
 
-  @@item
-
   def index_items
     posters = Poster.all
     View_Poster_Index.new.index(posters)
@@ -32,15 +30,15 @@ class Controller_Poster < Controller_Item
   end
 
   def update(id)
-    poster = Poster.find(@@item)
-    params = View_Update_Poster.new.update_item(@@item)
+    poster = Poster.find(id)
+    params = View_Update_Poster.new.update_item(id)
     if poster.author == "shop" 
       poster = Poster.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], "poster", params.values[7], "shop")
-      poster.saveupdate(@@item)
+      poster.saveupdate(id)
       puts "Votre poster à bien été mis à jour"
     elsif poster.author == "user"
       newitem = Annonce.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], params.values[6], params.values[7], params.values[8], params.values[9], params.values[10], params.values[11])
-      newitem.saveupdate(@@item)
+      newitem.saveupdate(id)
       puts "Votre poster à bien été mis à jour"
     end
   end

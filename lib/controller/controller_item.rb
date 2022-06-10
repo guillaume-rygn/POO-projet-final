@@ -9,8 +9,6 @@ require_relative '../router_admin'
 
 class Controller_Item
 
-  @@item
-
   def index_items
     items = Item.all
     View_Item_Index.new.index(items)
@@ -18,7 +16,6 @@ class Controller_Item
 
 
   def show(itemchoice)
-    @@item = itemchoice
     item = Item.find(itemchoice)
     View_Item_Show.new.show(item)
   end
@@ -28,7 +25,6 @@ class Controller_Item
     item = Item.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], "other", params.values[6], "shop")
     item.save
     puts "\n\nVotre Item a bien été enregistré !\n\n"
-    @@item = item.id
     Router_Admin.new.menu_function_item(item.id)
   end
 
