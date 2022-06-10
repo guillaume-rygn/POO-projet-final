@@ -1,6 +1,7 @@
 require_relative '../view/view_harddrive/view_create'
 require_relative '../view/view_harddrive/view_update'
 require_relative '../view/view_harddrive/view_index'
+require_relative '../view/view_harddrive/view_show'
 require_relative '../router_admin'
 require_relative '../model/harddrive'
 require_relative '../model/annonce'
@@ -18,13 +19,7 @@ class Controller_Harddrive < Controller_Item
   def show(itemchoice)
     @@item = itemchoice
     harddrive = Harddrive.find(itemchoice)
-    puts "#{harddrive.id} - #{harddrive.name} - prix : #{harddrive.price} - quantité : #{harddrive.quantity} - marque : #{harddrive.brand} - couleur : #{harddrive.color} - size : #{harddrive.size} - storage : #{harddrive.storage}"
-    puts "description:"
-    puts "> #{harddrive.description}"
-    if harddrive.author == "user"
-      item = Annonce.find(itemchoice)
-      puts "Telephone du vendeur : #{item.phone}"
-    end
+    View_Harddrive_Show.new.show(harddrive)
   end
 
   def create
