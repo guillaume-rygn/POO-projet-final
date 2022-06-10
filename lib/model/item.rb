@@ -57,7 +57,7 @@ class Item
 
   def save
     items = Item.all
-    header = "id,Name,price,quantity,brand,description,size,type,color,storage"
+    header = "id,Name,price,quantity,brand,description,size,type,color,storage,author,phone"
     file = "./db/data.csv"
 
     File.open(file, "w") do |csv|
@@ -129,7 +129,7 @@ class Item
 
   def saveupdate(id)
     items = Item.all
-    header = "id,Name,price,quantity,brand,description,size,type,color,storage"
+    header = "id,Name,price,quantity,brand,description,size,type,color,storage,author,phone"
     file = "./db/data.csv"
 
     File.open(file, "w") do |csv|
@@ -207,7 +207,7 @@ class Item
   def self.remove(i)
 
     items = Item.all
-    header = "id,Name,price,quantity,brand,description,size,type,color,storage"
+    header = "id,Name,price,quantity,brand,description,size,type,color,storage,author,phone"
     file = "./db/data.csv"
 
     File.open(file, "w") do |csv|
