@@ -13,7 +13,6 @@ class View_Annonce_Create < View
       puts "2 - Chaussure"
       puts "3 - Poster"
       puts "4 - Disque dur"
-      puts "5 - retour en arrière"
 
       choice = gets.chomp.to_i
 
@@ -77,8 +76,6 @@ class View_Annonce_Create < View
           end
           phone = phone()
           return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB", author: "user", phone: phone}       
-          break
-        when 5
           break
       else
         puts "Merci de choisir un choix valide"

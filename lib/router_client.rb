@@ -44,7 +44,7 @@ class Router_Client < Router_Admin
       case choicepsw 
       when 1234
         puts "Connexion réussi"
-        method(:menu).super_method.call
+        Router_Admin.new.menu
         break
       else
         puts "Erreur veuillez reessayer"

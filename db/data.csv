@@ -28,7 +28,7 @@ id,Name,price,quantity,brand,description,size,type,color,storage
 27,Heavy Duty Silk Bottle,$9.99,3,Nikon,Iphone dreamcatcher fingerstache. Typewriter vinyl chartreuse dreamcatcher vhs swag.,,other,purple,,shop,
 28,Incredible Bronze Clock,$77.99,14,Nikon,Pug microdosing biodiesel distillery. Readymade pug selfies art party keffiyeh. Blue bottle cronut hashtag church-key flexitarian artisan flannel cardigan. Heirloom helvetica roof taxidermy tumblr health cardigan.,,other,pear,,shop,
 29,Heavy Duty Linen Knife,$63.99,2,Samsung,Banh mi fashion axe vhs pickled cred neutra. Single-origin coffee tilde pbr&b leggings hella chartreuse helvetica.,,other,indigo,,shop,
-30,Sneakers,$20.99,8,Nike,Phlogiston fashion axe yuccie. Echo swag kombucha brooklyn.,41,shoe,coffee,,shop,
+30,Sneakers,$20.99,7,Nike,Phlogiston fashion axe yuccie. Echo swag kombucha brooklyn.,41,shoe,coffee,,shop,
 31,Chelsea Boots,$30.99,5,Adidas,Artisan deep v chillwave twee raw denim. Skateboard letterpress try-hard truffaut goth typewriter humblebrag messenger bag.,40,shoe,ochre,,shop,
 32,Military Boots,$25.99,15,Adidas,Pop-up helvetica chicharrones pickled. Fixie ennui dreamcatcher. Lo-fi cornhole 8-bit leggings occupy.,42,shoe,burgundy,,shop,
 33,Stiletto,$50.99,8,H&M,Put a bird on it lumbersexual you probably haven't heard of them listicle wolf +1 yolo cornhole. Kinfolk waistcoat viral typewriter truffaut selfies park pop-up.,39,shoe,gray,,shop,
@@ -47,7 +47,7 @@ id,Name,price,quantity,brand,description,size,type,color,storage
 46,Poster - The Green Mile,$19.99,9,AllPosters,Greetings programs!,A2,poster,viridian,,shop,
 47,Poster - Platoon,$23.99,10,AllPosters,What we've got here is failure to communicate.,A1,poster,amaranth,,shop,
 48,Poster - The Good the Bad and the Ugly,$13.99,8,AllPosters,Here's looking at you kid.,A2,poster,taupe,,shop,
-49,Aerodynamic Cotton Hard Drive,$110.99,23,Seagate, Navigating the protocol won't do anything we need to index the wireless jbod sensor!,2.5,hard drive,apricot,1TB,shop,
+49,Aerodynamic Cotton Hard Drive,$110.99,22,Seagate, Navigating the protocol won't do anything we need to index the wireless jbod sensor!,2.5,hard drive,apricot,1TB,shop,
 50,Fantastic Wool Hard Drive,$110.99,14,Apple,Compressing the firewall won't do anything we need to connect the bluetooth http sensor!,3.5,hard drive,cerulean,1TB,shop,
 51,Heavy Duty Linen Hard Drive,$117.99,19,Western Digital,You can't calculate the sensor without compressing the neural AI matrix!,3.5,hard drive,silver,2TB,shop,
 52,Lightweight Bronze Hard Drive,$108.99,22,Samsung,Try to input the SMS hard drive maybe it will connect the solid state alarm!,2.5,hard drive,azure,4TB,shop,
@@ -56,3 +56,11 @@ id,Name,price,quantity,brand,description,size,type,color,storage
 55,Incredible computer,$10.00,2,Vinci,You probably haven't heard of them carry humblebrag schlitz. Offal paleo mumblecore godard.,,other,fuchsia,,user,0423569871
 56,Amazing house,$30.00,1,Renault,Fingerstache williamsburg polaroid pour-over fixie etsy blue bottle. Tousled lomo shabby chic keytar paleo leggings wolf intelligentsia.,,other,violet,,user,0678985696
 57,Flu Game Sneakers,$15.00,1,Nike,Worn by Mickael Jordan during Game 5 of the 1997 Finals,46,shoe,black,,user,0699040569
+58,1,$1,,1,1,,other,1,,user,069904369
+59,1,$1,11,1,1,1,shoe,1,,user,0699040369
+60,1,$1,0,1,1,A1,poster,1,,user,043695623
+61,1,$1,1,1,1,1,hard drive,1,1TB,user,0699040369
+62,1,$1,1,1,1,,other,1,,user,0699040369
+63,1,$1,1,1,1,1,shoe,1,,user,0699040369
+64,1,$1,1,1,1,A1,poster,1,,user,0699040369
+65,1,$1,1,1,1,1,hard drive,1,1TB,user,0699040369
