@@ -72,25 +72,28 @@ class View_Menu
              menu_show_item()
              break
             when 3
-              pricemenu()
+              pricemenu(2)
               break
             when 4
-              pricemenudescending()
+              pricemenu(3)
               break
             when 5
-              shoeonly()
+              shoes = Shoe.all
+              itemonly(4, "chaussure", shoes)
               break
             when 6
-              posteronly()
+              posters = Poster.all
+              itemonly(5, "poster", posters)
               break
             when 7
-              harddriveonly()
+              harddrives = Harddrive.all
+              itemonly(6, "disque dur", harddrives)
               break
             when 8
-              annonceonly()
+              pricemenu(7)
               break
             when 9
-              shoponly()
+              pricemenu(8)
               break
             when 10
               break
@@ -98,326 +101,6 @@ class View_Menu
             puts "Merci de choisir un choix valide"
           end
         end
-  end
-
-  def pricemenu
-    puts "\n\nAffichons tous les Items :\n\n"
-        @controlleradmin.index_items(2)
-        @@typemenu = 2
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-  
-
-  def pricemenudescending
-    puts "\n\nAffichons tous les Items :\n\n"
-        @controlleradmin.index_items(3)
-        @@typemenu = 3
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-
-  def shoeonly
-    puts "\n\nAffichons toutes les chaussures :\n\n"
-        @controlleradmin.index_items(4)
-        @@typemenu = 4
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Afficher par taille croissante"
-          puts "3 - Afficher par taille décroissante"
-          puts "4 - Afficher par prix croissant"
-          puts "5 - Afficher par prix décroissant"
-          puts "6 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              displayshoe(1)
-            when 3
-              displayshoe(2)
-            when 4
-              displayshoe(3)
-            when 5
-              displayshoe(4)
-            when 6
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-  def posteronly
-    puts "\n\nAffichons toutes les posters :\n\n"
-        @controlleradmin.index_items(5)
-        @@typemenu = 5
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Afficher par taille croissante"
-          puts "3 - Afficher par taille décroissante"
-          puts "4 - Afficher par prix croissant"
-          puts "5 - Afficher par prix décroissant"
-          puts "6 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              displayposter(2)
-            when 3
-              displayposter(1)
-            when 4
-              displayposter(3)
-            when 5
-              displayposter(4)
-            when 6
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-
-  def harddriveonly
-    puts "\n\nAffichons toutes les posters :\n\n"
-        @controlleradmin.index_items(6)
-        @@typemenu = 6
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Afficher par taille croissante"
-          puts "3 - Afficher par taille décroissante"
-          puts "4 - Afficher par prix croissant"
-          puts "5 - Afficher par prix décroissant"
-          puts "6 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              displayharddrive(1)
-            when 3
-              displayharddrive(2)
-            when 4
-              displayharddrive(3)
-            when 5
-              displayharddrive(4)
-            when 6
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-  def annonceonly
-    puts "\n\nAffichons toutes les annonces :\n\n"
-        @controlleradmin.index_items(7)
-        @@typemenu = 7
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Afficher par taille croissante"
-          puts "3 - Afficher par taille décroissante"
-          puts "4 - Afficher par prix croissant"
-          puts "5 - Afficher par prix décroissant"
-          puts "6 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              displayannonce(1)
-            when 3
-              displayannonce(2)
-            when 4
-              displayannonce(3)
-            when 5
-              displayannonce(4)
-            when 6
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-  def shoponly
-    puts "\n\nAffichons toutes les annonces de la boutique :\n\n"
-        @controlleradmin.index_items(8)
-        @@typemenu = 8
-        while true
-          puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Afficher un Item par id"
-          puts "2 - Afficher par taille croissante"
-          puts "3 - Afficher par taille décroissante"
-          puts "4 - Afficher par prix croissant"
-          puts "5 - Afficher par prix décroissant"
-          puts "6 - Revenir au menu général"
-
-          choice_item = gets.chomp.to_i
-
-          case choice_item 
-            when 1
-             menu_show_item()
-             break
-            when 2
-              displayshop(1)
-            when 3
-              displayshop(2)
-            when 4
-              displayshop(3)
-            when 5
-              displayshop(4)
-            when 6
-              break
-          else
-            puts "Merci de choisir un choix valide"
-          end
-        end
-  end
-
-  def displayshoe(id)
-    shoes = Shoe.all
-
-    case id
-      when 1 
-        ordersize(shoes)
-      when 2
-        ordersizeinverse(shoes)
-      when 3
-        orderprice(shoes) 
-      when 4
-        orderpriceinverse(shoes)     
-    else
-      puts "Merci de choisir un choix valide"
-    end
-    
-  end
-
-  def displayposter(id)
-    poster = Poster.all
-
-    case id
-      when 1 
-        ordersize(poster)
-      when 2
-        ordersizeinverse(poster)
-      when 3
-        orderprice(poster) 
-      when 4
-        orderpriceinverse(poster)     
-    else
-      puts "Merci de choisir un choix valide"
-    end
-    
-  end
-
-  def displayharddrive(id)
-    harddrive = Harddrive.all
-
-    case id
-      when 1 
-        ordersize(harddrive)
-      when 2
-        ordersizeinverse(harddrive)
-      when 3
-        orderprice(harddrive) 
-      when 4
-        orderpriceinverse(harddrive)     
-    else
-      puts "Merci de choisir un choix valide"
-    end
-    
-  end
-
-  def displayannonce(id)
-    annonce = Annonce.all
-
-    case id
-      when 1 
-        ordersize(annonce)
-      when 2
-        ordersizeinverse(annonce)
-      when 3
-        orderprice(annonce) 
-      when 4
-        orderpriceinverse(annonce)     
-    else
-      puts "Merci de choisir un choix valide"
-    end
-    
-  end
-
-  def displayshop(id)
-    items = Items.all
-    shopitem = []
-    items.each do |item|
-      if item.author == "shop"
-        shopitem << item
-      end
-    end
-
-    case id
-      when 1 
-        ordersize(shopitem)
-      when 2
-        ordersizeinverse(shopitem)
-      when 3
-        orderprice(shopitem) 
-      when 4
-        orderpriceinverse(shopitem)     
-    else
-      puts "Merci de choisir un choix valide"
-    end
-    
   end
 
 
@@ -537,7 +220,85 @@ class View_Menu
     end
   end
 
+  
+
   private 
+
+  def pricemenu(id)
+    puts "\n\nAffichons tous les Items :\n\n"
+        @controlleradmin.index_items(id)
+        @@typemenu = id
+        while true
+          puts "\n\nQue souhaites tu faire ?"
+          puts "1 - Afficher un Item par id"
+          puts "2 - Revenir au menu général"
+
+          choice_item = gets.chomp.to_i
+
+          case choice_item 
+            when 1
+             menu_show_item()
+             break
+            when 2
+              break
+          else
+            puts "Merci de choisir un choix valide"
+          end
+        end
+  end
+  
+
+  def itemonly(id, item, array)
+    puts "\n\nAffichons toutes les #{item} :\n\n"
+        @controlleradmin.index_items(id)
+        @@typemenu = id
+        while true
+          puts "\n\nQue souhaites tu faire ?"
+          puts "1 - Afficher un Item par id"
+          puts "2 - Afficher par taille croissante"
+          puts "3 - Afficher par taille décroissante"
+          puts "4 - Afficher par prix croissant"
+          puts "5 - Afficher par prix décroissant"
+          puts "6 - Revenir au menu général"
+
+          choice_item = gets.chomp.to_i
+
+          case choice_item 
+            when 1
+             menu_show_item()
+             break
+            when 2
+              display(1, array)
+            when 3
+              display(2, array)
+            when 4
+              display(3, array)
+            when 5
+              display(4, array)
+            when 6
+              break
+          else
+            puts "Merci de choisir un choix valide"
+          end
+        end
+  end
+
+  
+  def display(id, array)
+    case id
+      when 1 
+        ordersize(array)
+      when 2
+        ordersizeinverse(array)
+      when 3
+        orderprice(array) 
+      when 4
+        orderpriceinverse(array)     
+    else
+      puts "Merci de choisir un choix valide"
+    end
+    
+  end
 
   def ordersize(array)
     puts "\n\n"

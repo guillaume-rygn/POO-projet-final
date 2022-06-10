@@ -13,7 +13,7 @@ class Annonce < Harddrive
     all_items = []
     
     CSV.foreach(("./db/data.csv"), headers: true, col_sep: ",") do |row|
-      if row[11].include?("user")
+      if row[10].include?("user")
         item_provisoire = Annonce.new(row[0], row[1], row[2], row[3], row[4], row[5], row[6],row[7], row[8], row[9], row[10], row[11])
         all_items << item_provisoire
       end
