@@ -32,15 +32,15 @@ class Controller_Annonce < Controller_Item
         newquantityitem = Item.new(item.id, item.name, item.price, response, item.brand, item.description, item.type, item.color,item.author)
         newquantityitem.saveupdate(newquantityitem.id)
       elsif item.type == "shoe"
-        item = Shoe.find(@@item)
+        item = Shoe.find(id)
         newquantityitem = Shoe.new(item.id, item.name, item.price, response, item.brand, item.description, item.size, item.type, item.color,item.author)
         newquantityitem.saveupdate(newquantityitem.id)
       elsif item.type == "poster"
-        item = Poster.find(@@item)
+        item = Poster.find(id)
         newquantityitem = Poster.new(item.id, item.name, item.price, response, item.brand, item.description, item.size, item.type, item.color,item.author)
         newquantityitem.saveupdate(newquantityitem.id)
       elsif item.type == "hard drive"
-        item = Harddrive.find(@@item)
+        item = Harddrive.find(id)
         newquantityitem = Harddrive.new(item.id, item.name, item.price, response, item.brand, item.description, item.size, item.type, item.color, item.storage,item.author)
         newquantityitem.saveupdate(newquantityitem.id)
       end

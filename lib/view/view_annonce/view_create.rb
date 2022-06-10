@@ -27,15 +27,15 @@ class View_Annonce_Create < View
           property = item_property
           puts "\n\n Quel est la taille de la chaussure ?"
           print "> "
-          size = gets.chomp.to_i
+          size = gets.chomp
       
-          until size >= 0 || size.is_number? do
+          while size.length == 0 || size.to_f <= 10 do
             print "Merci de rentrer une quantité valide:\n"
             print "> "
-            size = gets.chomp.to_i
+            size = gets.chomp
           end
           phone = phone()
-          return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "shoe", color: property[5], storage: "", author: "user", phone: phone}
+          return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size.to_i, type: "shoe", color: property[5], storage: "", author: "user", phone: phone}
           break
 
         when 3
@@ -44,7 +44,7 @@ class View_Annonce_Create < View
           print "> "
           size = gets.chomp.to_i
 
-          until size >= 0 || size > 2 || size.is_number? do
+          until size >= 0 || size > 2 do
             print "Merci de rentrer une taille valide:\n"
             print "> "
             size = gets.chomp.to_i
@@ -59,7 +59,7 @@ class View_Annonce_Create < View
           print "> "
           size = gets.chomp.to_i
       
-          until size >= 0 || size > 2 || size.is_number? do
+          until size >= 0 || size > 2 do
             print "Merci de rentrer une taille valide:\n"
             print "> "
             size = gets.chomp.to_i
@@ -67,12 +67,12 @@ class View_Annonce_Create < View
       
           puts "\n\n Quel est la capacité de stockage de votre disque dur ? (en TB)"
           print "> "
-          storage = gets.chomp.to_i
+          storage = gets.chomp
       
-          until storage >= 0 || size.is_number? do
+          while storage.length == 0 || storage.to_f <= 0 do
             print "Merci de rentrer une taille valide:\n"
             print "> "
-            storage = gets.chomp.to_i
+            storage = gets.chomp
           end
           phone = phone()
           return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB", author: "user", phone: phone}       

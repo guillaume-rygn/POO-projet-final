@@ -18,12 +18,12 @@ class View_Update_Harddrive < View
 
     puts "\n\n Quel est la capacité de stockage de votre disque dur ? (en TB)"
     print "> "
-    storage = gets.chomp.to_i
+    storage = gets.chomp
 
-    until storage >= 0 || size.is_number? do
+    while storage.length == 0 || storage.to_f <= 0 do
       print "Merci de rentrer une taille valide:\n"
       print "> "
-      storage = gets.chomp.to_i
+      storage = gets.chomp
     end
 
     if harddrive.author == "user"

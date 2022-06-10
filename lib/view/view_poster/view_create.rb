@@ -11,7 +11,7 @@ class View_Create_Poster < View
     print "> "
     size = gets.chomp.to_i
 
-    until size >= 0 || size > 2 || size.is_number? do
+    until size >= 0 || size > 2 do
       print "Merci de rentrer une taille valide:\n"
       print "> "
       size = gets.chomp.to_i

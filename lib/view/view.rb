@@ -2,10 +2,6 @@ class View
 
   private 
 
-  def is_number?
-    true if Float(self) rescue false
-  end
-
   def item_property
     puts "\n\nQuelle est le nom de votre item ?"
     print "> "
@@ -19,23 +15,24 @@ class View
 
     puts "\n\n Quel est le prix de votre item ? (en dollar)"
     print "> "
-    price = gets.chomp.to_i
+    price = gets.chomp
 
-    until price >= 0 || price.is_number? do
+    while price.length == 0 || price.to_f <= 0 do
       print "Merci de rentrer un nombre valide:\n"
       print "> "
-      price = gets.chomp.to_i
+      price = gets.chomp
     end
+
     price = "$#{price}"
 
     puts "\n\n Quel est la quantité de votre item ?"
     print "> "
-    quantity = gets.chomp.to_i
+    quantity = gets.chomp
 
-    until quantity >= 0 || quantity.is_number? do
+    while quantity.length == 0 || quantity.to_f <= 0  do
       print "Merci de rentrer une quantité valide:\n"
       print "> "
-      quantity = gets.chomp.to_i
+      quantity = gets.chomp
     end
 
     puts "\n\nQuelle est la marque de votre item ?"
@@ -68,7 +65,7 @@ class View
       color = gets.chomp
     end
 
-    return name,price,quantity,brand,description,color
+    return name,price,quantity.to_i,brand,description,color
   end
 
   def total(price, quantity)
