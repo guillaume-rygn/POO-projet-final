@@ -230,7 +230,7 @@ class View
               elsif choicequantity == 0
                 puts "Erreur merci de mettre une quantité valide"
               else
-                puts "Rupture stock pour se produit veuillez réessayer avec un autre produit" 
+                puts "Pas assez de stock pour se produit veuillez réessayer avec un autre produit" 
               end
           end
           puts "Achat confirmé"

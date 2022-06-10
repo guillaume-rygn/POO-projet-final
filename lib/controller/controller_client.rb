@@ -13,7 +13,7 @@ class Controller_Client < Controller_Admin
       item = Item.find(@@item)
       if item.type == "other"
         newquantityitem = Item.new(item.id, item.name, item.price, response, item.brand, item.description, item.type, item.color,item.author)
-        Shoe.new.saveupdate(newquantityitem.id)
+        newquantityitem.saveupdate(newquantityitem.id)
       elsif item.type == "shoe"
         item = Shoe.find(@@item)
         newquantityitem = Shoe.new(item.id, item.name, item.price, response, item.brand, item.description, item.size, item.type, item.color,item.author)
