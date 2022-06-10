@@ -11,8 +11,10 @@ LebonCLI<br>
 
 ## Utilisation 🌐
 
-Pour utiliser le site utilisez la commande suivante : 
+Pour utiliser l'application sur terminal utilisez la commande suivante : 
 ```ruby app.rb```
+
+Mot de passe Admin : ```1234```
 
 ## Technologies utilisées ⚙️
 

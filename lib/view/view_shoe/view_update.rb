@@ -17,9 +17,9 @@ class View_Update_Shoe < View
 
     if shoe.author == "user"
       phone = phone()
-      return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "shoe", color: property[5], storage: "", author: "user", phone: phone}
+      return params = {id: shoe.id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "shoe", color: property[5], storage: "", author: "user", phone: phone}
     else
-      return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, color: property[5] }
+      return params = {id: shoe.id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, color: property[5] }
     end
   end
 end

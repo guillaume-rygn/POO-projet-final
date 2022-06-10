@@ -61,7 +61,7 @@ class Router_Admin
         Controller_Item.new.create
         break
       when 2
-        Controller_Shoe.new.create    
+        Controller_Shoe.new.create   
         break
       when 3
         Controller_Poster.new.create
@@ -85,64 +85,60 @@ class Router_Admin
         @@typemenu = 1
         while true
           puts "\n\nQue souhaites tu faire ?"
-          puts "1 - Poster une annonce" 
-          puts "2 - Afficher un Item par id"
-          puts "3 - Afficher les items par ordre croissant de prix"
-          puts "4 - Afficher les items par ordre décroissant de prix"
-          puts "5 - Afficher que les chaussures"
-          puts "6 - Afficher que les poster"
-          puts "7 - Afficher que les disque dur"
-          puts "8 - Afficher que les annonces"
-          puts "9 - Afficher que les produits de la boutique"
-          puts "10 - Revenir au menu général"
+          puts "1 - Afficher un Item par id"
+          puts "2 - Afficher les items par ordre croissant de prix"
+          puts "3 - Afficher les items par ordre décroissant de prix"
+          puts "4 - Afficher que les chaussures"
+          puts "5 - Afficher que les poster"
+          puts "6 - Afficher que les disque dur"
+          puts "7 - Afficher que les annonces"
+          puts "8 - Afficher que les produits de la boutique"
+          puts "9 - Revenir au menu général"
 
           choice_item = gets.chomp.to_i
 
           case choice_item 
             when 1
-              Controller_Annonce.new.create
-              break
-            when 2
              menu_show_item()
              break
-            when 3
+            when 2
               items = Item.all
               puts "\n\nAffichons tous les Items par prix croissant :\n\n"
               orderprice(items)
               break
-            when 4
+            when 3
               items = Item.all
               puts "\n\nAffichons tous les Items par prix décroissant:\n\n"
               orderpriceinverse(items)
               break
-            when 5
+            when 4
               shoes = Shoe.all
               puts "\n\nAffichons toutes les chaussures :\n\n"
               Controller_Shoe.new.index_items
               @@typemenu = 2
               itemonly(shoes)
               break
-            when 6
+            when 5
               posters = Poster.all
               puts "\n\nAffichons toutes les poster :\n\n"
               Controller_Poster.new.index_items
               @@typemenu = 3
               itemonly(posters)
               break
-            when 7
+            when 6
               harddrives = Harddrive.all
               puts "\n\nAffichons toutes les disques durs :\n\n"
               Controller_Harddrive.new.index_items
               @@typemenu = 4
               itemonly(harddrives)
               break
-            when 8
+            when 7
               puts "\n\nAffichons toutes les annonces :\n\n"
               Controller_Annonce.new.index_items
               @@typemenu = 5
               pricemenu()
               break
-            when 9
+            when 8
               items = Item.all
               i = 1
               @@typemenu = 6
@@ -155,7 +151,7 @@ class Router_Admin
               end
               pricemenu()
               break
-            when 10
+            when 9
               break
           else
             puts "Merci de choisir un choix valide"

@@ -24,17 +24,17 @@ class Controller_Item
   end
 
   def create
-    params = View_Create_Item.new.create_item
+    params = View_Item_Create.new.create_item
     item = Item.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], "other", params.values[6], "shop")
     item.save
     puts "\n\nVotre Item a bien été enregistré !\n\n"
     @@item = item.id
-    Router_Admin.new.menu_function_item
+    Router_Admin.new.menu_function_item(item.id)
   end
 
   def update(id)
-    item = Item.find(@@item)
-    params = @view.update_item(@@item)
+    item = Item.find(id)
+    params = View_Item_Update.new.update_item(id)
     if item.author == "shop"
       newitem = Item.new(params.values[0], params.values[1], params.values[2], params.values[3], params.values[4], params.values[5], "other", params.values[6], "shop")
       newitem.saveupdate(@@item)
@@ -49,7 +49,6 @@ class Controller_Item
   def delete(id)
     Item.remove(id.to_i)
     puts "suppression réussite"
-    Router_Admin.new.menu
   end
 
 end

@@ -2,6 +2,7 @@ require_relative '../view'
 
 class View_Update_Harddrive < View
   def update_item(id)
+
     harddrive = Harddrive.find(id)
 
     property = item_property
@@ -27,9 +28,9 @@ class View_Update_Harddrive < View
 
     if harddrive.author == "user"
       phone = phone()
-      return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB", author: "user", phone: phone}
+      return params = {id: harddrive.id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB", author: "user", phone: phone}
     else
-      return params = {id: id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB"}
+      return params = {id: harddrive.id, name: property[0], price: property[1], quantity: property[2], brand: property[3], description: property[4], size: size, type: "hard drive", color: property[5], storage: "#{storage}TB"}
     end
   end
 end

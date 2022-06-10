@@ -1,6 +1,6 @@
 require_relative '../view'
 
-class View_Create_Item < View
+class View_Item_Create < View
   def create_item
 
     id = Item.all.length
